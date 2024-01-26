@@ -87,26 +87,46 @@ class Blueprint():
 			if ref_value != hash_value:
 				raise InvalidHashValueException("Blueprint string has invalid has value.")
 
-		assert(bp_string.startswith("BLUEPRINT:"))
-		components = bp_string[10:].split(",")
+		if bp_string.startswith("BLUEPRINT:"):
+			components = bp_string[10:].split(",")
+		elif bp_string.startswith("DYBP:"):
+			components = bp_string[5:].split(",")
+		else:
+			raise RuntimeError()
+		#assert(bp_string.startswith("BLUEPRINT:"))
+		#components = bp_string[10:].split(",")
 
-		assert(len(components) == 12)
-		(fixed0_1, layout, icon0, icon1, icon2, icon3, icon4, fixed0_2, timestamp, game_version, short_desc, b64data_hash) = components
+		if(len(components) == 12):
+			(fixed0_1, layout, icon0, icon1, icon2, icon3, icon4, fixed0_2, timestamp, game_version, short_desc, b64data_hash) = components
 
-		(fixed0_1, layout, icon0, icon1, icon2, icon3, icon4, fixed0_2, timestamp) = (int(fixed0_1), int(layout), int(icon0), int(icon1), int(icon2), int(icon3), int(icon4), int(fixed0_2), int(timestamp))
-		assert(fixed0_1 == 0)
-		assert(fixed0_2 == 0)
-		timestamp = DateTimeTools.csharp_to_datetime(timestamp)
-		short_desc = urllib.parse.unquote(short_desc)
+			(fixed0_1, layout, icon0, icon1, icon2, icon3, icon4, fixed0_2, timestamp) = (int(fixed0_1), int(layout), int(icon0), int(icon1), int(icon2), int(icon3), int(icon4), int(fixed0_2), int(timestamp))
+			assert(fixed0_1 == 0)
+			assert(fixed0_2 == 0)
+			timestamp = DateTimeTools.csharp_to_datetime(timestamp)
+			short_desc = urllib.parse.unquote(short_desc)
 
-		b64data_hash_split = b64data_hash.split("\"")
-		assert(len(b64data_hash_split) == 3)
+			b64data_hash_split = b64data_hash.split("\"")
+			assert(len(b64data_hash_split) == 3)
 
-		(long_desc, b64data, hash_value) = b64data_hash_split
-		long_desc = urllib.parse.unquote(long_desc)
-		compressed_data = base64.b64decode(b64data)
-		data = gzip.decompress(compressed_data)
-		return cls(layout = layout, icon0 = icon0, icon1 = icon1, icon2 = icon2, icon3 = icon3, icon4 = icon4, timestamp = timestamp, game_version = game_version, short_desc = short_desc, long_desc = long_desc, data = data)
+			(long_desc, b64data, hash_value) = b64data_hash_split
+			long_desc = urllib.parse.unquote(long_desc)
+			compressed_data = base64.b64decode(b64data)
+			data = gzip.decompress(compressed_data)
+			print(str(data))
+			return cls(layout = layout, icon0 = icon0, icon1 = icon1, icon2 = icon2, icon3 = icon3, icon4 = icon4, timestamp = timestamp, game_version = game_version, short_desc = short_desc, long_desc = long_desc, data = data)
+		else:
+			assert(len(components) == 5)
+			(unkown0,timestamp,unkown1,unkown3,b64data_hash) = components
+			b64data_hash_split = b64data_hash.split("\"")
+			(long_desc, b64data, hash_value) = b64data_hash_split
+			# long_desc = urllib.parse.unquote(long_desc)
+			compressed_data = base64.b64decode(b64data)
+			data = gzip.decompress(compressed_data)
+			# for byte in data:
+			# 	print(byte,end = "")
+			# 	print(" ",end = "")
+			# print(str(data))
+			return cls(layout = 0,icon0 = 0,icon1 = 0,icon2 = 0,icon3 = 0,icon4 = 0,timestamp = DateTimeTools.csharp_to_datetime(int(timestamp)),game_version = 0,short_desc = 0,long_desc = 0,data = data)
 
 	def serialize(self):
 		compressed_data = gzip.compress(self._data)

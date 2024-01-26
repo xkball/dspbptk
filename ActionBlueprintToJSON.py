@@ -25,9 +25,9 @@ from Blueprint import Blueprint
 
 class ActionBlueprintToJSON(BaseAction):
 	def run(self):
-		if (not self._args.force) and os.path.exists(self._args.outfile):
-			print("Refusing to overwrite: %s" % (self._args.outfile))
-			return 1
+		# if (not self._args.force) and os.path.exists(self._args.outfile):
+		# 	print("Refusing to overwrite: %s" % (self._args.outfile))
+		# 	return 1
 
 		bp = Blueprint.read_from_file(self._args.infile, validate_hash = not self._args.ignore_corrupt)
 		bp_dict = bp.to_dict()

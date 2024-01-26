@@ -1,0 +1,65 @@
+{
+    "data": {
+        "area_count": 1,
+        "areas": [
+            {
+                "anchor_local_offset_x": 0,
+                "anchor_local_offset_y": 0,
+                "area_segments": 160,
+                "height": 1,
+                "index": 0,
+                "parent_index": -1,
+                "tropic_anchor": 0,
+                "width": 1
+            }
+        ],
+        "buildings": [
+            {
+                "area_index": 0,
+                "filter_id": 0,
+                "index": 0,
+                "input_from_slot": 0,
+                "input_object_index": 4294967295,
+                "input_offset": 0,
+                "input_to_slot": 1,
+                "item_id": "ConveyorBeltMKIII",
+                "local_offset_x": -7.5890989137405995e-06,
+                "local_offset_x2": -7.5890989137405995e-06,
+                "local_offset_y": 0.0,
+                "local_offset_y2": 0.0,
+                "local_offset_z": -1.3735146239923779e-05,
+                "local_offset_z2": -1.3735146239923779e-05,
+                "model_index": 37,
+                "output_from_slot": 0,
+                "output_object_index": 4294967295,
+                "output_offset": 0,
+                "output_to_slot": 0,
+                "parameter_count": 0,
+                "parameters": [],
+                "recipe_id": 0,
+                "yaw": 180.0,
+                "yaw2": 180.0
+            }
+        ],
+        "cursor_offset_x": 0,
+        "cursor_offset_y": 0,
+        "cursor_target_area": 0,
+        "dragbox_size_x": 1,
+        "dragbox_size_y": 1,
+        "primary_area_index": 0,
+        "version": 1
+    },
+    "game_version": "0.10.28.21308",
+    "icon": {
+        "images": [
+            2003,
+            0,
+            0,
+            0,
+            0
+        ],
+        "layout": 10
+    },
+    "short_desc": "test1",
+    "timestamp": "2024-01-16 21:24:45"
+}

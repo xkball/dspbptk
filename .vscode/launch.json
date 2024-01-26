@@ -1,0 +1,44 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "dspbptk-dsp1",
+            "type": "python",
+            "request": "launch",
+            "program": "dspbptk",
+            "console": "integratedTerminal",
+            "args": ["bp2json","--pretty-print","\"D:\\下载\\屑翔的戴森球.txt\"","test.json"],
+            "justMyCode": true
+        },
+        {
+            "name": "dspbptk-dsp2",
+            "type": "python",
+            "request": "launch",
+            "program": "dspbptk",
+            "console": "integratedTerminal",
+            "args": ["bp2json","--pretty-print","\"c:\\Users\\xkball\\Documents\\Dyson Sphere Program\\DSPBlueprint\\pc__10100__0_0__0_0__25_35_100.txt\"","test.json"],
+            "justMyCode": true
+        },
+        {
+            "name": "dspbptk-building",
+            "type": "python",
+            "request": "launch",
+            "program": "dspbptk",
+            "console": "integratedTerminal",
+            "args": ["bp2json","--pretty-print","\"c:\\Users\\xkball\\Documents\\Dyson Sphere Program\\Blueprint\\test1.txt\"","test.json"],
+            "justMyCode": true
+        },
+        {
+            "name": "dspbptk-easyConvent",
+            "type": "python",
+            "request": "launch",
+            "program": "EasyConvent.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}

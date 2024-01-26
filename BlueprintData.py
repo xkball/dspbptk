@@ -229,6 +229,10 @@ class BlueprintData():
 
 	@classmethod
 	def deserialize(cls, data):
+		for byte in data:
+			print(byte,end = "")
+			print(" ",end = "")
+
 		header = cls._HEADER.unpack_head(data)
 
 		areas = [ ]
